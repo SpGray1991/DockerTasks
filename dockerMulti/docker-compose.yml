@@ -1,0 +1,21 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  node_app:
+    build: ./server
+    ports:
+      - "9000:9000"
+    networks:
+      - netw1
+  proxy:
+    build: ./proxy
+    ports:
+      - 5000:5000
+    networks:
+      - netw1
+
+networks:
+  netw1:
+    external:
+      name: netw1

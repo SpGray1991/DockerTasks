@@ -1,0 +1,20 @@
+version: "3"
+services:
+  backend:
+    build: ./backend
+    command: node index.js
+    ports:
+      - 4200:4200
+    networks:
+      - netw1
+  proxy:
+    build: ./proxy
+    ports:
+      - 5000:5000
+    networks:
+      - netw1
+
+networks:
+  netw1:
+    external:
+      name: netw1
